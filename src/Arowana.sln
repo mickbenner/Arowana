@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cake", "Cake", "{684C17BA-44EA-4EAE-9B98-6EC0FBBF5E84}"
+	ProjectSection(SolutionItems) = preProject
+		..\build.cake = ..\build.cake
+		..\build.ps1 = ..\build.ps1
+		..\download.cake.ps1 = ..\download.cake.ps1
+		..\ReleaseNotes.md = ..\ReleaseNotes.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4652E818-E8FF-4CD9-A6A0-5F8540ECA694}"
+	ProjectSection(SolutionItems) = preProject
+		..\build\credentials.cake = ..\build\credentials.cake
+		..\build\packages.cake = ..\build\packages.cake
+		..\build\parameters.cake = ..\build\parameters.cake
+		..\build\paths.cake = ..\build\paths.cake
+		..\build\version.cake = ..\build\version.cake
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4652E818-E8FF-4CD9-A6A0-5F8540ECA694} = {684C17BA-44EA-4EAE-9B98-6EC0FBBF5E84}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8B689BF-A1A8-4AFE-8DD8-6ECE2D44BAA5}
+	EndGlobalSection
+EndGlobal
