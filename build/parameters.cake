@@ -1,19 +1,16 @@
-#load "./paths.cake"
-#load "./packages.cake"
-#load "./version.cake"
-#load "./credentials.cake"
+// #load "./paths.cake"
+// #load "./packages.cake"
+// #load "./version.cake"
+// #load "./credentials.cake"
 
 public class BuildParameters
 {
     public string Target { get; private set; }
     public string Configuration { get; private set; }
 	public string ProductName { get; private set; }
+
     public bool IsLocalBuild { get; private set; }
     public bool IsRunningOnWindows { get; private set; }
-
-
-
-
     public bool IsRunningOnUnix { get; private set; }
     public bool IsRunningOnAppVeyor { get; private set; }
     public bool IsPullRequest { get; private set; }
@@ -24,22 +21,16 @@ public class BuildParameters
     public bool IsPublishBuild { get; private set; }
     public bool IsReleaseBuild { get; private set; }
 
-
     public bool SkipGitVersion { get; private set; }
     public bool SkipOpenCover { get; private set; }
     public bool SkipSigning { get; private set; }
 	public bool Verbose { get; private set; }
 
-    public BuildCredentials GitHub { get; private set; }
-    public CoverallsCredentials Coveralls { get; private set; }
-    public TwitterCredentials Twitter { get; private set; }
-    public GitterCredentials Gitter { get; private set; }
     public ReleaseNotes ReleaseNotes { get; private set; }
-    public BuildVersion Version { get; private set; }
-    public BuildPaths Paths { get; private set; }
-    public BuildPackages Packages { get; private set; }
+
 	public ICakeContext Context { get; private set; }
 
+    /// <summary>Gets a value indicating whether or not the build should be published.</summary>
     public bool ShouldPublish
     {
         get
@@ -48,33 +39,15 @@ public class BuildParameters
         }
     }
 
+    /// <summary>Gets a value indicating whether or not the build should be published to MyGet.</summary>
     public bool ShouldPublishToMyGet
     {
         get
         {
-            return !IsLocalBuild && !IsPullRequest && IsMainCakeRepo
-                && (IsTagged || IsDevelopCakeBranch);
+            return !IsLocalBuild && !IsPullRequest && IsMainCakeRepo && (IsTagged || IsDevelopCakeBranch);
         }
     }
 
-    public bool CanPostToTwitter
-    {
-        get
-        {
-            return !string.IsNullOrEmpty(Twitter.ConsumerKey) &&
-                !string.IsNullOrEmpty(Twitter.ConsumerSecret) &&
-                !string.IsNullOrEmpty(Twitter.AccessToken) &&
-                !string.IsNullOrEmpty(Twitter.AccessTokenSecret);
-        }
-    }
-
-    public bool CanPostToGitter
-    {
-        get
-        {
-            return !string.IsNullOrEmpty(Gitter.Token) && !string.IsNullOrEmpty(Gitter.RoomId);
-        }
-    }
 
     public void Initialize(ICakeContext context)
     {
@@ -180,10 +153,6 @@ public class BuildParameters
             IsMainBranch = isMainBranch,
             IsDevelopCakeBranch = StringComparer.OrdinalIgnoreCase.Equals("develop", buildSystem.AppVeyor.Environment.Repository.Branch),
             IsTagged = IsBuildTagged(buildSystem),
-            GitHub = BuildCredentials.GetGitHubCredentials(context),
-            Coveralls = CoverallsCredentials.GetCoverallsCredentials(context),
-            Twitter = TwitterCredentials.GetTwitterCredentials(context),
-            Gitter = GitterCredentials.GetGitterCredentials(context),
             ReleaseNotes = context.ParseReleaseNotes("./ReleaseNotes.md"),
             IsPublishBuild = IsPublishing(target),
             IsReleaseBuild = IsReleasing(target),
@@ -212,4 +181,3 @@ public class BuildParameters
         return targets.Any(t => StringComparer.OrdinalIgnoreCase.Equals(t, target));
     }
 }
-

@@ -1,0 +1,60 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <TargetFrameworks>net48;netcoreapp2.1</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Product>Arowana</Product>
+    <Company>Blue Pine Tree Software</Company>
+    <Authors>Mick Benner</Authors>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageIconUrl></PackageIconUrl>
+    <RepositoryUrl></RepositoryUrl>
+    <PackageTags></PackageTags>
+    <!-- <Configuration>$(Configuration)|$(TargetFramework)|$(Platform)</Configuration> -->
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NET461</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|AnyCPU'">
+    <DefineConstants>TRACE;NET461</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp2.0|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp2.0|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)\Arowana.Common\Arowana.Common.csproj" Condition="$(ProjectName)!='Arowana.Common'"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="$(SolutionDir)SolutionVersionAssemblyInfo.cs" Link="SolutionVersionAssemblyInfo.cs" />
+    <Compile Include="$(SolutionDir)SolutionAssemblyInfo.cs" Link="SolutionAssemblyInfo.cs" Condition="true"/>
+  </ItemGroup>
+
+</Project>

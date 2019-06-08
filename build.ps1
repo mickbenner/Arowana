@@ -5,7 +5,6 @@
 ##########################################################################
 
 <#
-
 .SYNOPSIS
 This is a Powershell script to bootstrap a Cake build.
 
@@ -36,14 +35,16 @@ Remaining arguments are added here.
 
 .LINK
 https://cakebuild.net
-
 #>
 
 [CmdletBinding()]
 Param(
     [string]$Script = "build.cake",
-    [string]$Target,
-    [string]$Configuration,
+    [ValidateSet("netcoreapp2.2", "netstandard2.0", "net48", "all")]
+    [string]$FrameworkTarget = "all",
+    [string]$Target = "default",
+    [ValidateSet("debug", "release", "development")]
+    [string]$Configuration = "debug",
     [ValidateSet("Quiet", "Minimal", "Normal", "Verbose", "Diagnostic")]
     [string]$Verbosity = "Verbose",
     [switch]$ShowDescription,
@@ -217,8 +218,6 @@ if (!(Test-Path $CAKE_EXE)) {
     Throw "Could not find Cake.exe at $CAKE_EXE"
 }
 
-
-
 # Build Cake arguments
 $cakeArguments = @("$Script");
 if ($Target) { $cakeArguments += "-target=$Target" }
@@ -233,5 +232,6 @@ $cakeArguments += $ScriptArgs
 
 # Start Cake
 Write-Host "Running build script..."
+
 &$CAKE_EXE $cakeArguments
 exit $LASTEXITCODE

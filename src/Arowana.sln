@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4652E818
 		..\build\version.cake = ..\build\version.cake
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arowana.ArchiveDevices", "Arowana.Storage\Arowana.Storage.csproj", "{8E6490AB-8955-49EF-9121-DB20F99D8F42}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arowana.Common", "Arowana.Common\Arowana.Common.csproj", "{90013C92-F2BD-49B9-B0DA-E5B4D272FF10}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,4 +34,24 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C8B689BF-A1A8-4AFE-8DD8-6ECE2D44BAA5}
 	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E6490AB-8955-49EF-9121-DB20F99D8F42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E6490AB-8955-49EF-9121-DB20F99D8F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E6490AB-8955-49EF-9121-DB20F99D8F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E6490AB-8955-49EF-9121-DB20F99D8F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90013C92-F2BD-49B9-B0DA-E5B4D272FF10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90013C92-F2BD-49B9-B0DA-E5B4D272FF10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90013C92-F2BD-49B9-B0DA-E5B4D272FF10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90013C92-F2BD-49B9-B0DA-E5B4D272FF10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 EndGlobal
+
+
+
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5540797D-C071-4034-8B07-F8967CB3443A}
+	EndGlobalSection
